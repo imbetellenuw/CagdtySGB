@@ -18,18 +18,6 @@ volumes:
 networks:
   ckh_net:
 
-services:
-  promtail:
-    image: grafana/promtail:latest
-    volumes:
-      - ../logs:/var/log/router
-      - ./config:/etc/promtail
-      - /var/run/docker.sock:/var/run/docker.sock
-    command: -config.file=/etc/promtail/promtail.yaml
-    networks:
-      - ckh_net
-    restart: unless-stopped
-
   loki:
     image: grafana/loki:latest
     ports:
